@@ -1,0 +1,14 @@
+{
+  "domain": "elero",
+  "name": "Elero",
+  "after_dependencies": ["radio_frequency"],
+  "codeowners": ["@pfriedrich84"],
+  "config_flow": true,
+  "documentation": "https://github.com/pfriedrich84/homeassistant-elero",
+  "integration_type": "hub",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/pfriedrich84/homeassistant-elero/issues",
+  "quality_scale": "bronze",
+  "requirements": [],
+  "version": "0.0.1"
+}

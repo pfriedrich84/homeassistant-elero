@@ -1,0 +1,37 @@
+learn_remote:
+  name: Learn remote
+  description: Placeholder for a future Elero learn/import workflow.
+  fields:
+    provider_entity_id:
+      name: RF provider
+      description: RF provider entity used for learning/importing.
+      required: true
+      selector:
+        entity:
+          domain: radio_frequency
+
+send_raw_command:
+  name: Send raw command
+  description: Developer/debug service for sending a raw Elero command through a provider.
+  fields:
+    provider_entity_id:
+      name: RF provider
+      required: true
+      selector:
+        entity:
+          domain: radio_frequency
+    target_id:
+      name: Target ID
+      required: true
+      example: "0xABCDEF"
+      selector:
+        text:
+    command:
+      name: Command
+      required: true
+      selector:
+        select:
+          options:
+            - up
+            - down
+            - stop

@@ -1,0 +1,19 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Elero einrichten",
+        "description": "Wähle einen kompatiblen RF-Provider aus. Dies ist ein früher Platzhalter-Flow.",
+        "data": {
+          "provider_entity_id": "RF-Provider-Entität"
+        }
+      }
+    },
+    "error": {
+      "unknown": "Unerwarteter Fehler"
+    },
+    "abort": {
+      "already_configured": "Elero ist bereits eingerichtet"
+    }
+  }
+}

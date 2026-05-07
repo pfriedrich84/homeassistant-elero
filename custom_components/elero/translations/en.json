@@ -1,0 +1,19 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up Elero",
+        "description": "Select a compatible RF provider. This is an early placeholder flow.",
+        "data": {
+          "provider_entity_id": "RF provider entity"
+        }
+      }
+    },
+    "error": {
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "Elero is already configured"
+    }
+  }
+}

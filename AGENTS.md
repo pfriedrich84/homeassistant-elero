@@ -1,54 +1,26 @@
-# AGENTS.md
+# AGENTS.md — homeassistant-elero Agent Instructions
 
-Guidance for coding agents working on `homeassistant-elero`.
+Tool-neutral entry point for coding agents working in this repository. Keep this file short; put durable guidance in `docs/agent/`.
 
-## Mission
+## Read first
 
-Build a Home Assistant custom integration for Elero RF devices that is hardware-agnostic and can use Home Assistant RF providers where possible.
+1. [`docs/agent/RULES.md`](docs/agent/RULES.md) — non-negotiable project rules and domain invariants.
+2. [`docs/agent/PROJECT.md`](docs/agent/PROJECT.md) — project context, architecture notes, and important paths.
+3. [`docs/agent/CHECKS.md`](docs/agent/CHECKS.md) — validation commands to run before finishing changes.
+4. [`docs/agent/WORKFLOWS.md`](docs/agent/WORKFLOWS.md) — reusable maintenance workflows.
+5. [`docs/agent/SAFETY.md`](docs/agent/SAFETY.md) — safe/unsafe operations for agents.
+6. [`docs/agent/AUTORESEARCH.md`](docs/agent/AUTORESEARCH.md) — optional metric-driven experiment workflow.
 
-This project should not become a CC1101 driver or ESPHome firmware repository.
+## Project docs
 
-## Architecture Rules
+- [`docs/README.md`](docs/README.md) — documentation index.
+- [`docs/developer/ARCHITECTURE.md`](docs/developer/ARCHITECTURE.md) — architecture and data flow.
+- [`docs/developer/RF_PROVIDER_STRATEGY.md`](docs/developer/RF_PROVIDER_STRATEGY.md) — RF provider strategy and capability model.
+- [`docs/developer/DEVELOPMENT.md`](docs/developer/DEVELOPMENT.md) — local development notes.
+- [`docs/user/HACS.md`](docs/user/HACS.md) — HACS installation and packaging notes.
 
-Keep these layers separate:
+## Quick summary
 
-```text
-Home Assistant integration
-    ↓
-Elero protocol abstraction / rf-protocols
-    ↓
-Home Assistant radio_frequency provider
-    ↓
-External RF backend
-```
+`homeassistant-elero` is an experimental Home Assistant custom integration for Elero RF devices. It should remain hardware-agnostic: Home Assistant entities and workflows live here, while CC1101/ESPHome firmware, RF sniffing, timing loops, and low-level radio drivers belong in RF provider/gateway projects.
 
-## Do
-
-- Keep the integration provider-agnostic.
-- Prefer Home Assistant config entries over YAML.
-- Use Home Assistant entity patterns.
-- Keep Elero cover/device logic testable.
-- Document assumptions clearly.
-- Add TODO comments where HA RF APIs are not yet stable.
-- Keep `custom_components/elero/` HACS-compatible.
-
-## Do Not
-
-- Add ESP32 firmware code here.
-- Add CC1101 SPI drivers here.
-- Hard-code LilyGO/CC1101 as the only supported backend.
-- Depend on undocumented Home Assistant internals.
-- Implement sniffing or timing-critical RF loops in Python.
-
-## Important Related Work
-
-- `pfriedrich84/esphome-elero` issue #176: ESPHome RF gateway/provider architecture.
-- `pfriedrich84/esphome-elero` issue #177: HA/HACS/Core integration strategy.
-
-## Suggested First Tasks
-
-1. Keep the repository skeleton HACS-valid.
-2. Implement a basic config flow placeholder.
-3. Add provider selection model.
-4. Add stub Elero cover entities.
-5. Add architecture docs before real RF send logic.
+Before finishing code changes, run the relevant checks from [`docs/agent/CHECKS.md`](docs/agent/CHECKS.md).
